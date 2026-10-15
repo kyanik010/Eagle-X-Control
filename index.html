@@ -1,1 +1,34 @@
-
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#080d19">
+<title>Eagle X Control</title>
+<style>
+:root{color-scheme:dark;--bg:#080d19;--panel:#101a2b;--line:#26354d;--text:#edf3ff;--muted:#91a2bd;--blue:#63a6ff;--green:#52d6a0;--amber:#f2c46d;--red:#ff7f8a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -15%,#172c4c 0,transparent 45%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;min-height:100vh}.shell{max-width:1200px;margin:auto;padding:24px}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0 26px;border-bottom:1px solid var(--line);flex-wrap:wrap}.brand{display:flex;align-items:center;gap:13px}.logo{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#1d3c68,#101b31);border:1px solid #38577f;color:#a9ceff;font-weight:900;font-size:22px}h1{font-size:21px;margin:0}.sub{font-size:12px;color:var(--muted);margin-top:4px}.pill{border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:var(--muted);font-size:12px}
+.intro{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:28px 0 18px;flex-wrap:wrap}.intro h2{margin:0;font-size:24px}.intro p{margin:7px 0 0;color:var(--muted);font-size:13px}.notice{border:1px solid #6a5429;background:#251f14;color:#f7d99b;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.7;margin-bottom:20px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.stat,.panel{background:linear-gradient(145deg,rgba(20,33,56,.96),rgba(13,22,38,.96));border:1px solid var(--line);border-radius:16px}.stat{padding:18px}.stat .label{color:var(--muted);font-size:13px}.stat .num{font-size:29px;font-weight:750;margin-top:12px}.stat .hint{font-size:12px;color:var(--muted);margin-top:5px}
+.panel{margin-top:18px;overflow:hidden}.panelhead{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px;border-bottom:1px solid var(--line);flex-wrap:wrap}.panelhead h3{margin:0;font-size:16px}.tools{display:flex;gap:9px;flex-wrap:wrap}input,select{font:inherit;color:var(--text);background:#0b1424;border:1px solid var(--line);border-radius:10px;padding:10px 12px;outline:none}input{min-width:220px}input:focus,select:focus{border-color:var(--blue)}
+.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:680px}th,td{text-align:right;padding:15px 18px;border-bottom:1px solid rgba(38,53,77,.7);font-size:13px}th{color:var(--muted);font-weight:600;background:rgba(5,11,21,.2)}td{color:#dce6f7}.empty{text-align:center;padding:32px;color:var(--muted)}footer{padding:24px 0;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+@media(max-width:850px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.shell{padding:16px}.intro h2{font-size:21px}}@media(max-width:420px){.stats{gap:9px}.stat{padding:13px}.stat .num{font-size:24px}input{min-width:100%;width:100%}.tools{width:100%}.tools select{flex:1}}
+</style>
+</head>
+<body><div class="shell">
+<header><div class="brand"><div class="logo" aria-hidden="true">EX</div><div><h1>Eagle X Control</h1><div class="sub">لوحة إدارة الأجهزة والاشتراكات</div></div></div><div class="pill">لوحة المشرف · نسخة أولية</div></header>
+<section class="intro"><div><h2>نظرة عامة</h2><p>متابعة الأجهزة والفترات التجريبية والاشتراكات من مكان واحد.</p></div><div class="pill">حالة الاتصال: غير متصل</div></section>
+<div class="notice"><strong>تنبيه:</strong> هذه الواجهة غير مربوطة بقاعدة البيانات بعد. الأرقام فارغة عمدًا حتى لا تعرض بيانات وهمية، ولا يمكنها تفعيل الاشتراكات في هذه المرحلة.</div>
+<section class="stats" aria-label="إحصائيات الأجهزة">
+<div class="stat"><div class="label">إجمالي الأجهزة</div><div class="num">—</div><div class="hint">الأجهزة المسجلة</div></div>
+<div class="stat"><div class="label">فترة تجريبية</div><div class="num">—</div><div class="hint">اشتراكات تجريبية</div></div>
+<div class="stat"><div class="label">اشتراكات نشطة</div><div class="num">—</div><div class="hint">اشتراكات فعّالة</div></div>
+<div class="stat"><div class="label">تحتاج إلى تجديد</div><div class="num">—</div><div class="hint">منتهية أو تتطلب اشتراكًا</div></div></section>
+<section class="panel"><div class="panelhead"><h3>الأجهزة المسجلة</h3><div class="tools"><input id="search" type="search" placeholder="ابحث بمعرّف الجهاز..." aria-label="البحث بمعرّف الجهاز"><select id="filter" aria-label="تصفية حسب الحالة"><option value="all">كل الحالات</option><option value="trial">تجريبي</option><option value="active">نشط</option><option value="expired">منتهي</option><option value="blocked">موقوف</option></select></div></div>
+<div class="tablewrap"><table><thead><tr><th>معرّف الجهاز</th><th>الحالة</th><th>بداية التجربة</th><th>انتهاء الصلاحية</th><th>آخر ظهور</th></tr></thead><tbody id="devices"><tr><td colspan="5" class="empty">لا توجد بيانات معروضة. يلزم إعداد الربط الآمن بقاعدة البيانات.</td></tr></tbody></table></div></section>
+<footer><span>© Eagle X Control</span><span>حماية بيانات المشتركين أولوية</span></footer></div>
+<script>
+// لا تضع مفاتيح الإدارة السرية في هذه الصفحة. يجب أن تمر عمليات الإدارة عبر API محمي بتسجيل دخول المشرف.
+const emptyMessage='البيانات غير متصلة؛ لا يمكن البحث أو التصفية قبل إعداد الربط الآمن.';
+document.getElementById('search').addEventListener('input',()=>{document.getElementById('devices').innerHTML='<tr><td colspan="5" class="empty">'+emptyMessage+'</td></tr>'});
+document.getElementById('filter').addEventListener('change',()=>{document.getElementById('devices').innerHTML='<tr><td colspan="5" class="empty">'+emptyMessage+'</td></tr>'});
+</script></body></html>
