@@ -7,28 +7,73 @@
 :root{color-scheme:dark;--bg:#080d19;--panel:#101a2b;--line:#26354d;--text:#edf3ff;--muted:#91a2bd;--blue:#63a6ff;--green:#52d6a0;--amber:#f2c46d;--red:#ff7f8a}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -15%,#172c4c 0,transparent 45%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;min-height:100vh}.shell{max-width:1200px;margin:auto;padding:24px}
 header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0 26px;border-bottom:1px solid var(--line);flex-wrap:wrap}.brand{display:flex;align-items:center;gap:13px}.logo{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#1d3c68,#101b31);border:1px solid #38577f;color:#a9ceff;font-weight:900;font-size:22px}h1{font-size:21px;margin:0}.sub{font-size:12px;color:var(--muted);margin-top:4px}.pill{border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:var(--muted);font-size:12px}
-.intro{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:28px 0 18px;flex-wrap:wrap}.intro h2{margin:0;font-size:24px}.intro p{margin:7px 0 0;color:var(--muted);font-size:13px}.notice{border:1px solid #6a5429;background:#251f14;color:#f7d99b;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.7;margin-bottom:20px}
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.stat,.panel{background:linear-gradient(145deg,rgba(20,33,56,.96),rgba(13,22,38,.96));border:1px solid var(--line);border-radius:16px}.stat{padding:18px}.stat .label{color:var(--muted);font-size:13px}.stat .num{font-size:29px;font-weight:750;margin-top:12px}.stat .hint{font-size:12px;color:var(--muted);margin-top:5px}
-.panel{margin-top:18px;overflow:hidden}.panelhead{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px;border-bottom:1px solid var(--line);flex-wrap:wrap}.panelhead h3{margin:0;font-size:16px}.tools{display:flex;gap:9px;flex-wrap:wrap}input,select{font:inherit;color:var(--text);background:#0b1424;border:1px solid var(--line);border-radius:10px;padding:10px 12px;outline:none}input{min-width:220px}input:focus,select:focus{border-color:var(--blue)}
-.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:680px}th,td{text-align:right;padding:15px 18px;border-bottom:1px solid rgba(38,53,77,.7);font-size:13px}th{color:var(--muted);font-weight:600;background:rgba(5,11,21,.2)}td{color:#dce6f7}.empty{text-align:center;padding:32px;color:var(--muted)}footer{padding:24px 0;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-@media(max-width:850px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.shell{padding:16px}.intro h2{font-size:21px}}@media(max-width:420px){.stats{gap:9px}.stat{padding:13px}.stat .num{font-size:24px}input{min-width:100%;width:100%}.tools{width:100%}.tools select{flex:1}}
+.intro{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:28px 0 18px;flex-wrap:wrap}.intro h2{margin:0;font-size:24px}.intro p{margin:7px 0 0;color:var(--muted);font-size:13px}.notice{border:1px solid #6a5429;background:#251f14;color:#f7d99b;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.7;margin-bottom:20px}.notice.ok{border-color:#245a49;background:#10271f;color:#9be7c8}.notice.err{border-color:#6a3039;background:#2a151b;color:#ffb4bc}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.stat,.panel,.login{background:linear-gradient(145deg,rgba(20,33,56,.96),rgba(13,22,38,.96));border:1px solid var(--line);border-radius:16px}.stat{padding:18px}.stat .label{color:var(--muted);font-size:13px}.stat .num{font-size:29px;font-weight:750;margin-top:12px}.stat .hint{font-size:12px;color:var(--muted);margin-top:5px}
+.panel{margin-top:18px;overflow:hidden}.panelhead{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px;border-bottom:1px solid var(--line);flex-wrap:wrap}.panelhead h3{margin:0;font-size:16px}.tools{display:flex;gap:9px;flex-wrap:wrap}input,select,button{font:inherit;color:var(--text);background:#0b1424;border:1px solid var(--line);border-radius:10px;padding:10px 12px;outline:none}input{min-width:220px}input:focus,select:focus{border-color:var(--blue)}button{cursor:pointer;background:#214c7d;border-color:#376ba4;font-weight:650}button:disabled{opacity:.55;cursor:wait}.secondary{background:#17243a;border-color:var(--line)}.danger{background:#49212a;border-color:#733541}.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:900px}th,td{text-align:right;padding:13px 15px;border-bottom:1px solid rgba(38,53,77,.7);font-size:13px}th{color:var(--muted);font-weight:600;background:rgba(5,11,21,.2)}td{color:#dce6f7}.empty{text-align:center;padding:32px;color:var(--muted)}footer{padding:24px 0;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.login{max-width:440px;margin:48px auto;padding:24px}.login h2{margin:0 0 8px}.login p{color:var(--muted);font-size:13px;line-height:1.7}.login label{display:block;color:var(--muted);font-size:13px;margin:16px 0 7px}.login input{width:100%;min-width:0}.login button{width:100%;margin-top:18px}.hidden{display:none!important}.status{display:inline-block;border-radius:999px;padding:4px 9px;font-size:12px;border:1px solid var(--line)}.status.active{color:var(--green)}.status.trial{color:var(--amber)}.status.expired,.status.revoked,.status.blocked{color:var(--red)}.rowtools{display:flex;gap:6px;align-items:center}.rowtools select{min-width:110px;padding:7px}
+@media(max-width:850px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.shell{padding:16px}.intro h2{font-size:21px}}@media(max-width:420px){.stats{gap:9px}.stat{padding:13px}.stat .num{font-size:24px}input{min-width:100%;width:100%}.tools{width:100%}.tools select{flex:1}.login{margin:28px auto}}
 </style>
 </head>
 <body><div class="shell">
-<header><div class="brand"><div class="logo" aria-hidden="true">EX</div><div><h1>Eagle X Control</h1><div class="sub">لوحة إدارة الأجهزة والاشتراكات</div></div></div><div class="pill">لوحة المشرف · نسخة أولية</div></header>
-<section class="intro"><div><h2>نظرة عامة</h2><p>متابعة الأجهزة والفترات التجريبية والاشتراكات من مكان واحد.</p></div><div class="pill">حالة الاتصال: غير متصل</div></section>
-<div class="notice"><strong>تنبيه:</strong> هذه الواجهة غير مربوطة بقاعدة البيانات بعد. الأرقام فارغة عمدًا حتى لا تعرض بيانات وهمية، ولا يمكنها تفعيل الاشتراكات في هذه المرحلة.</div>
+<header><div class="brand"><div class="logo" aria-hidden="true">EX</div><div><h1>Eagle X Control</h1><div class="sub">لوحة إدارة الأجهزة والاشتراكات</div></div></div><div class="pill" id="sessionPill">تسجيل دخول المشرف مطلوب</div></header>
+<section id="loginView" class="login"><h2>دخول المشرف</h2><p>سجّل الدخول بحساب المشرف المسجّل في Supabase. لا يمكن للزبائن الوصول إلى بيانات الأجهزة من هذه الصفحة.</p><div id="loginMessage" class="notice hidden" role="status"></div><form id="loginForm"><label for="email">البريد الإلكتروني</label><input id="email" type="email" autocomplete="username" required value="kyanik010@gmail.com"><label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="current-password" required><button id="loginButton" type="submit">تسجيل الدخول</button></form></section>
+<main id="dashboard" class="hidden">
+<section class="intro"><div><h2>نظرة عامة</h2><p>بيانات مباشرة من قاعدة بيانات الأجهزة والاشتراكات.</p></div><div class="tools"><button class="secondary" id="refreshButton">تحديث البيانات</button><button class="secondary" id="logoutButton">تسجيل الخروج</button></div></section>
+<div id="notice" class="notice" role="status">جارٍ الاتصال بقاعدة البيانات...</div>
 <section class="stats" aria-label="إحصائيات الأجهزة">
-<div class="stat"><div class="label">إجمالي الأجهزة</div><div class="num">—</div><div class="hint">الأجهزة المسجلة</div></div>
-<div class="stat"><div class="label">فترة تجريبية</div><div class="num">—</div><div class="hint">اشتراكات تجريبية</div></div>
-<div class="stat"><div class="label">اشتراكات نشطة</div><div class="num">—</div><div class="hint">اشتراكات فعّالة</div></div>
-<div class="stat"><div class="label">تحتاج إلى تجديد</div><div class="num">—</div><div class="hint">منتهية أو تتطلب اشتراكًا</div></div></section>
-<section class="panel"><div class="panelhead"><h3>الأجهزة المسجلة</h3><div class="tools"><input id="search" type="search" placeholder="ابحث بمعرّف الجهاز..." aria-label="البحث بمعرّف الجهاز"><select id="filter" aria-label="تصفية حسب الحالة"><option value="all">كل الحالات</option><option value="trial">تجريبي</option><option value="active">نشط</option><option value="expired">منتهي</option><option value="blocked">موقوف</option></select></div></div>
-<div class="tablewrap"><table><thead><tr><th>معرّف الجهاز</th><th>الحالة</th><th>بداية التجربة</th><th>انتهاء الصلاحية</th><th>آخر ظهور</th></tr></thead><tbody id="devices"><tr><td colspan="5" class="empty">لا توجد بيانات معروضة. يلزم إعداد الربط الآمن بقاعدة البيانات.</td></tr></tbody></table></div></section>
-<footer><span>© Eagle X Control</span><span>حماية بيانات المشتركين أولوية</span></footer></div>
-<script>
-// لا تضع مفاتيح الإدارة السرية في هذه الصفحة. يجب أن تمر عمليات الإدارة عبر API محمي بتسجيل دخول المشرف.
-const emptyMessage='البيانات غير متصلة؛ لا يمكن البحث أو التصفية قبل إعداد الربط الآمن.';
-document.getElementById('search').addEventListener('input',()=>{document.getElementById('devices').innerHTML='<tr><td colspan="5" class="empty">'+emptyMessage+'</td></tr>'});
-document.getElementById('filter').addEventListener('change',()=>{document.getElementById('devices').innerHTML='<tr><td colspan="5" class="empty">'+emptyMessage+'</td></tr>'});
+<div class="stat"><div class="label">إجمالي الأجهزة</div><div class="num" id="totalCount">—</div><div class="hint">الأجهزة المسجلة</div></div>
+<div class="stat"><div class="label">فترة تجريبية</div><div class="num" id="trialCount">—</div><div class="hint">اشتراكات تجريبية</div></div>
+<div class="stat"><div class="label">اشتراكات نشطة</div><div class="num" id="activeCount">—</div><div class="hint">اشتراكات فعّالة</div></div>
+<div class="stat"><div class="label">تحتاج إلى تجديد</div><div class="num" id="renewCount">—</div><div class="hint">منتهية أو ملغاة</div></div></section>
+<section class="panel"><div class="panelhead"><h3>الأجهزة المسجلة</h3><div class="tools"><input id="search" type="search" placeholder="ابحث بمعرّف الجهاز..." aria-label="البحث بمعرّف الجهاز"><select id="filter" aria-label="تصفية حسب الحالة"><option value="all">كل الحالات</option><option value="trial">تجريبي</option><option value="active">نشط</option><option value="expired">منتهي</option><option value="revoked">ملغى</option><option value="blocked">موقوف</option></select></div></div>
+<div class="tablewrap"><table><thead><tr><th>معرّف الجهاز</th><th>الاشتراك</th><th>حالة الجهاز</th><th>بداية التجربة</th><th>انتهاء التجربة</th><th>انتهاء الاشتراك</th><th>آخر ظهور</th><th>إجراء</th></tr></thead><tbody id="devices"><tr><td colspan="8" class="empty">سجّل الدخول لعرض البيانات.</td></tr></tbody></table></div></section>
+</main><footer><span>© Eagle X Control</span><span>تتم عمليات الإدارة عبر واجهة خلفية تتحقق من هوية المشرف.</span></footer></div>
+<script type="module">
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+const SUPABASE_URL = "https://rsiwnaelmahoofsxosjq.supabase.co";
+const SUPABASE_PUBLIC_KEY = "sb_publishable_ZgWToIcN18gJlOdwJme8QQ_H_moIvga";
+const API_URL = SUPABASE_URL + "/functions/v1/admin-api";
+const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLIC_KEY, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
+const $ = id => document.getElementById(id);
+let devices = [];
+const safe = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const date = value => value ? new Date(value).toLocaleString("ar", { dateStyle:"medium", timeStyle:"short" }) : "—";
+function setNotice(message, kind="") { const el=$("notice"); el.textContent=message; el.className="notice"+(kind ? " "+kind : ""); }
+function loginMessage(message, kind="err") { const el=$("loginMessage"); el.textContent=message; el.className="notice "+kind; }
+function showSession(session) { $("loginView").classList.toggle("hidden",!!session); $("dashboard").classList.toggle("hidden",!session); $("sessionPill").textContent=session ? "المشرف: "+(session.user.email||"مسجّل الدخول") : "تسجيل دخول المشرف مطلوب"; }
+async function api(method="GET", body) {
+  const { data } = await supabase.auth.getSession();
+  if (!data.session) throw new Error("انتهت الجلسة؛ سجّل الدخول مجددًا.");
+  const response = await fetch(API_URL, { method, headers: { "Authorization":"Bearer "+data.session.access_token, "apikey":SUPABASE_PUBLIC_KEY, "Content-Type":"application/json" }, ...(body ? {body:JSON.stringify(body)} : {}) });
+  const result = await response.json().catch(()=>({}));
+  if (!response.ok) {
+    if (response.status===401 || response.status===403) throw new Error("تم رفض الوصول. تأكد من حساب المشرف ثم سجّل الدخول مجددًا.");
+    throw new Error(result.error || "تعذّر الاتصال بالخادم.");
+  }
+  return result;
+}
+function statusLabel(device) {
+  if(device.device_status==="blocked") return ["موقوف","blocked"];
+  const s=device.subscription_status || "trial";
+  const names={trial:"تجريبي",active:"نشط",expired:"منتهي",revoked:"ملغى"};
+  return [names[s]||s,s];
+}
+function render() {
+  const q=$("search").value.trim().toUpperCase(), filter=$("filter").value;
+  const visible=devices.filter(d => (!q || d.device_id.toUpperCase().includes(q)) && (filter==="all" || (filter==="blocked" ? d.device_status==="blocked" : d.subscription_status===filter && d.device_status!=="blocked")));
+  $("totalCount").textContent=devices.length;
+  $("trialCount").textContent=devices.filter(d=>d.subscription_status==="trial" && d.device_status!=="blocked").length;
+  $("activeCount").textContent=devices.filter(d=>d.subscription_status==="active" && d.device_status!=="blocked" && (!d.subscription_expires_at || new Date(d.subscription_expires_at)>new Date())).length;
+  $("renewCount").textContent=devices.filter(d=>["expired","revoked"].includes(d.subscription_status) || (d.subscription_status==="active" && d.subscription_expires_at && new Date(d.subscription_expires_at)<=new Date())).length;
+  if(!visible.length){$("devices").innerHTML='<tr><td colspan="8" class="empty">لا توجد أجهزة مطابقة.</td></tr>';return;}
+  $("devices").innerHTML=visible.map(d=>{const [label,cls]=statusLabel(d);return '<tr><td dir="ltr">'+safe(d.device_id)+'</td><td><span class="status '+safe(cls)+'">'+safe(label)+'</span></td><td>'+ (d.device_status==="blocked"?'موقوف':'نشط') +'</td><td>'+safe(date(d.first_seen_at))+'</td><td>'+safe(date(d.trial_expires_at))+'</td><td>'+safe(date(d.subscription_expires_at))+'</td><td>'+safe(date(d.last_seen_at))+'</td><td><div class="rowtools"><select aria-label="حالة الاشتراك" data-status="'+safe(d.device_id)+'"><option value="trial" '+(d.subscription_status==="trial"?"selected":"")+'>تجريبي</option><option value="active" '+(d.subscription_status==="active"?"selected":"")+'>نشط</option><option value="expired" '+(d.subscription_status==="expired"?"selected":"")+'>منتهي</option><option value="revoked" '+(d.subscription_status==="revoked"?"selected":"")+'>ملغى</option></select><select aria-label="حالة الجهاز" data-device="'+safe(d.device_id)+'"><option value="active" '+(d.device_status==="active"?"selected":"")+'>مسموح</option><option value="blocked" '+(d.device_status==="blocked"?"selected":"")+'>حظر</option></select><button data-save="'+safe(d.device_id)+'">حفظ</button></div></td></tr>';}).join("");
+  document.querySelectorAll("[data-save]").forEach(btn=>btn.addEventListener("click",async()=>{const id=btn.dataset.save;const status=document.querySelector('[data-status="'+CSS.escape(id)+'"]').value;const deviceStatus=document.querySelector('[data-device="'+CSS.escape(id)+'"]').value;btn.disabled=true;try{await api("PATCH",{device_id:id,subscription_status:status,device_status:deviceStatus});setNotice("تم حفظ التغييرات للجهاز "+id,"ok");await loadDevices();}catch(e){setNotice(e.message,"err");btn.disabled=false;}}));
+}
+async function loadDevices() { setNotice("جارٍ تحميل بيانات الأجهزة...");try{const result=await api();devices=Array.isArray(result.devices)?result.devices:[];render();setNotice("تم الاتصال بنجاح. عدد الأجهزة: "+devices.length,"ok");}catch(e){setNotice(e.message,"err");if(/انتهت الجلسة|رفض الوصول/.test(e.message)){await supabase.auth.signOut();showSession(null);}} }
+$("loginForm").addEventListener("submit",async e=>{e.preventDefault();const btn=$("loginButton");btn.disabled=true;btn.textContent="جارٍ تسجيل الدخول...";try{const {data,error}=await supabase.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});if(error)throw error;if(data.user?.email?.toLowerCase()!=="kyanik010@gmail.com"){await supabase.auth.signOut();throw new Error("هذا الحساب غير مخوّل ليكون مشرفًا.");}loginMessage("تم تسجيل الدخول بنجاح.","ok");showSession(data.session);await loadDevices();}catch(err){loginMessage(err.message||"تعذّر تسجيل الدخول.");}finally{btn.disabled=false;btn.textContent="تسجيل الدخول";}});
+$("refreshButton").addEventListener("click",loadDevices);
+$("logoutButton").addEventListener("click",async()=>{await supabase.auth.signOut();devices=[];showSession(null);$("password").value="";});
+$("search").addEventListener("input",render);$("filter").addEventListener("change",render);
+supabase.auth.onAuthStateChange((_event,session)=>{if(session && session.user?.email?.toLowerCase()==="kyanik010@gmail.com"){showSession(session);loadDevices();}else if(!session){showSession(null);}});
+const {data:{session}}=await supabase.auth.getSession();
+if(session?.user?.email?.toLowerCase()==="kyanik010@gmail.com"){showSession(session);await loadDevices();}else{if(session)await supabase.auth.signOut();showSession(null);}
 </script></body></html>
