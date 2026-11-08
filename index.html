@@ -27,7 +27,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;pa
 <input id="hostUrl" class="host-url" type="url" placeholder="https://server.example:8080" required>
 <input id="hostPriority" type="number" min="1" max="10000" value="100" aria-label="أولوية الفحص">
 <label class="host-enabled"><input id="hostEnabled" type="checkbox" checked> مفعّل</label>
-<div class="host-actions"><button id="saveHostButton" type="submit">إضافة الهوست</button><button id="cancelHostEdit" class="secondary" type="button">إلغاء</button></div>
+<div class="host-actions"><button id="saveHostButton" type="submit">إضافة الهوست</button><button id="cancelHostEdit" class="secondary hidden" type="button">إلغاء</button></div>
 </form>
 <div class="tablewrap"><table style="min-width:760px"><thead><tr><th>الاسم</th><th>عنوان الهوست</th><th>الأولوية</th><th>الحالة</th><th>الإجراءات</th></tr></thead><tbody id="hostRows"><tr><td colspan="5" class="empty">سجّل الدخول لعرض الهوستات.</td></tr></tbody></table></div>
 </section>
