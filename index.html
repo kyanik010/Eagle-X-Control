@@ -56,7 +56,8 @@ function showSession(session) { $("loginView").classList.toggle("hidden",!!sessi
 async function api(method="GET", body, resource) {
   const { data } = await supabase.auth.getSession();
   if (!data.session) throw new Error("انتهت الجلسة؛ سجّل الدخول مجددًا.");
-  const requestUrl = resource ? API_URL + "?resource=" + encodeURIComponent(resource) : API_URL;\n  const response = await fetch(requestUrl, { method, headers: { "Authorization":"Bearer "+data.session.access_token, "apikey":SUPABASE_PUBLIC_KEY, "Content-Type":"application/json" }, ...(body ? {body:JSON.stringify(body)} : {}) });
+  const requestUrl = resource ? API_URL + "?resource=" + encodeURIComponent(resource) : API_URL;
+  const response = await fetch(requestUrl, { method, headers: { "Authorization":"Bearer "+data.session.access_token, "apikey":SUPABASE_PUBLIC_KEY, "Content-Type":"application/json" }, ...(body ? {body:JSON.stringify(body)} : {}) });
   const result = await response.json().catch(()=>({}));
   if (!response.ok) {
     if (response.status===401 || response.status===403) throw new Error("تم رفض الوصول. تأكد من حساب المشرف ثم سجّل الدخول مجددًا.");
