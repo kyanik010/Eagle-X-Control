@@ -10,7 +10,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;pa
 .intro{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:28px 0 18px;flex-wrap:wrap}.intro h2{margin:0;font-size:24px}.intro p{margin:7px 0 0;color:var(--muted);font-size:13px}.notice{border:1px solid #6a5429;background:#251f14;color:#f7d99b;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.7;margin-bottom:20px}.notice.ok{border-color:#245a49;background:#10271f;color:#9be7c8}.notice.err{border-color:#6a3039;background:#2a151b;color:#ffb4bc}
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.stat,.panel,.login{background:linear-gradient(145deg,rgba(20,33,56,.96),rgba(13,22,38,.96));border:1px solid var(--line);border-radius:16px}.stat{padding:18px}.stat .label{color:var(--muted);font-size:13px}.stat .num{font-size:29px;font-weight:750;margin-top:12px}.stat .hint{font-size:12px;color:var(--muted);margin-top:5px}
 .panel{margin-top:18px;overflow:hidden}.panelhead{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px;border-bottom:1px solid var(--line);flex-wrap:wrap}.panelhead h3{margin:0;font-size:16px}.tools{display:flex;gap:9px;flex-wrap:wrap}input,select,button{font:inherit;color:var(--text);background:#0b1424;border:1px solid var(--line);border-radius:10px;padding:10px 12px;outline:none}input{min-width:220px}input:focus,select:focus{border-color:var(--blue)}button{cursor:pointer;background:#214c7d;border-color:#376ba4;font-weight:650}button:disabled{opacity:.55;cursor:wait}.secondary{background:#17243a;border-color:var(--line)}.danger{background:#49212a;border-color:#733541}.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:900px}th,td{text-align:right;padding:13px 15px;border-bottom:1px solid rgba(38,53,77,.7);font-size:13px}th{color:var(--muted);font-weight:600;background:rgba(5,11,21,.2)}td{color:#dce6f7}.empty{text-align:center;padding:32px;color:var(--muted)}footer{padding:24px 0;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.login{max-width:440px;margin:48px auto;padding:24px}.login h2{margin:0 0 8px}.login p{color:var(--muted);font-size:13px;line-height:1.7}.login label{display:block;color:var(--muted);font-size:13px;margin:16px 0 7px}.login input{width:100%;min-width:0}.login button{width:100%;margin-top:18px}.hidden{display:none!important}.status{display:inline-block;border-radius:999px;padding:4px 9px;font-size:12px;border:1px solid var(--line)}.status.active{color:var(--green)}.status.trial{color:var(--amber)}.status.expired,.status.revoked,.status.blocked{color:var(--red)}.rowtools{display:flex;gap:6px;align-items:center}.rowtools select{min-width:110px;padding:7px}
-@media(max-width:850px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.shell{padding:16px}.intro h2{font-size:21px}}@media(max-width:420px){.stats{gap:9px}.stat{padding:13px}.stat .num{font-size:24px}input{min-width:100%;width:100%}.tools{width:100%}.tools select{flex:1}.login{margin:28px auto}}
+.hostform{display:grid;grid-template-columns:1.1fr 2fr .65fr auto auto;gap:9px;padding:16px;border-bottom:1px solid var(--line);align-items:center}.hostform input{min-width:0;width:100%}.host-actions{display:flex;gap:7px;flex-wrap:wrap}.host-actions button{padding:7px 10px}.host-enabled{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:13px;white-space:nowrap}.host-enabled input{min-width:0;width:auto}.host-url{direction:ltr;text-align:left;min-width:260px}.host-count{font-size:12px;color:var(--muted)}@media(max-width:850px){.hostform{grid-template-columns:1fr 1fr}.hostform .host-url{grid-column:1/-1}.host-actions{grid-column:1/-1}}@media(max-width:850px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.shell{padding:16px}.intro h2{font-size:21px}}@media(max-width:420px){.stats{gap:9px}.stat{padding:13px}.stat .num{font-size:24px}input{min-width:100%;width:100%}.tools{width:100%}.tools select{flex:1}.login{margin:28px auto}}
 </style>
 </head>
 <body><div class="shell">
@@ -19,6 +19,19 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;pa
 <main id="dashboard" class="hidden">
 <section class="intro"><div><h2>نظرة عامة</h2><p>بيانات مباشرة من قاعدة بيانات الأجهزة والاشتراكات.</p></div><div class="tools"><button class="secondary" id="refreshButton">تحديث البيانات</button><button class="secondary" id="logoutButton">تسجيل الخروج</button></div></section>
 <div id="notice" class="notice" role="status">جارٍ الاتصال بقاعدة البيانات...</div>
+<section class="panel" id="hostsPanel">
+<div class="panelhead"><div><h3>إدارة هوستات الاشتراكات</h3><div class="host-count" id="hostCount">0 من 10 هوستات</div></div><button class="secondary" id="refreshHostsButton" type="button">تحديث الهوستات</button></div>
+<form id="hostForm" class="hostform">
+<input id="hostId" type="hidden">
+<input id="hostName" maxlength="80" placeholder="اسم الهوست (للمشرف فقط)" required>
+<input id="hostUrl" class="host-url" type="url" placeholder="https://server.example:8080" required>
+<input id="hostPriority" type="number" min="1" max="10000" value="100" aria-label="أولوية الفحص">
+<label class="host-enabled"><input id="hostEnabled" type="checkbox" checked> مفعّل</label>
+<div class="host-actions"><button id="saveHostButton" type="submit">إضافة الهوست</button><button id="cancelHostEdit" class="secondary hidden" type="button">إلغاء</button></div>
+</form>
+<div class="tablewrap"><table style="min-width:760px"><thead><tr><th>الاسم</th><th>عنوان الهوست</th><th>الأولوية</th><th>الحالة</th><th>الإجراءات</th></tr></thead><tbody id="hostRows"><tr><td colspan="5" class="empty">سجّل الدخول لعرض الهوستات.</td></tr></tbody></table></div>
+</section>
+
 <section class="stats" aria-label="إحصائيات الأجهزة">
 <div class="stat"><div class="label">إجمالي الأجهزة</div><div class="num" id="totalCount">—</div><div class="hint">الأجهزة المسجلة</div></div>
 <div class="stat"><div class="label">فترة تجريبية</div><div class="num" id="trialCount">—</div><div class="hint">اشتراكات تجريبية</div></div>
@@ -34,16 +47,17 @@ const SUPABASE_PUBLIC_KEY = "sb_publishable_ZgWToIcN18gJlOdwJme8QQ_H_moIvga";
 const API_URL = SUPABASE_URL + "/functions/v1/admin-api";
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLIC_KEY, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
 const $ = id => document.getElementById(id);
-let devices = [];
+let devices = [], hosts = [];
 const safe = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const date = value => value ? new Date(value).toLocaleString("ar", { dateStyle:"medium", timeStyle:"short" }) : "—";
 function setNotice(message, kind="") { const el=$("notice"); el.textContent=message; el.className="notice"+(kind ? " "+kind : ""); }
 function loginMessage(message, kind="err") { const el=$("loginMessage"); el.textContent=message; el.className="notice "+kind; }
 function showSession(session) { $("loginView").classList.toggle("hidden",!!session); $("dashboard").classList.toggle("hidden",!session); $("sessionPill").textContent=session ? "المشرف: "+(session.user.email||"مسجّل الدخول") : "تسجيل دخول المشرف مطلوب"; }
-async function api(method="GET", body) {
+async function api(method="GET", body, resource) {
   const { data } = await supabase.auth.getSession();
   if (!data.session) throw new Error("انتهت الجلسة؛ سجّل الدخول مجددًا.");
-  const response = await fetch(API_URL, { method, headers: { "Authorization":"Bearer "+data.session.access_token, "apikey":SUPABASE_PUBLIC_KEY, "Content-Type":"application/json" }, ...(body ? {body:JSON.stringify(body)} : {}) });
+  const requestUrl = resource ? API_URL + "?resource=" + encodeURIComponent(resource) : API_URL;
+  const response = await fetch(requestUrl, { method, headers: { "Authorization":"Bearer "+data.session.access_token, "apikey":SUPABASE_PUBLIC_KEY, "Content-Type":"application/json" }, ...(body ? {body:JSON.stringify(body)} : {}) });
   const result = await response.json().catch(()=>({}));
   if (!response.ok) {
     if (response.status===401 || response.status===403) throw new Error("تم رفض الوصول. تأكد من حساب المشرف ثم سجّل الدخول مجددًا.");
@@ -69,7 +83,47 @@ function render() {
   document.querySelectorAll("[data-save]").forEach(btn=>btn.addEventListener("click",async()=>{const id=btn.dataset.save;const status=document.querySelector('[data-status="'+CSS.escape(id)+'"]').value;const deviceStatus=document.querySelector('[data-device="'+CSS.escape(id)+'"]').value;const durationDays=Number(document.querySelector('[data-duration="'+CSS.escape(id)+'"]').value);btn.disabled=true;try{await api("PATCH",{device_id:id,subscription_status:status,device_status:deviceStatus,...(status==="active"?{duration_days:durationDays}:{})});setNotice("تم حفظ التغييرات للجهاز "+id,"ok");await loadDevices();}catch(e){setNotice(e.message,"err");btn.disabled=false;}}));
   document.querySelectorAll("[data-activate]").forEach(btn=>btn.addEventListener("click",async()=>{const id=btn.dataset.activate;const durationDays=Number(document.querySelector('[data-duration="'+CSS.escape(id)+'"]').value);btn.disabled=true;try{await api("PATCH",{device_id:id,subscription_status:"active",device_status:"active",duration_days:durationDays});setNotice("تم تفعيل الجهاز لمدة "+({30:"شهر",90:"3 أشهر",180:"6 أشهر",365:"سنة"}[durationDays]||durationDays+" يومًا"),"ok");await loadDevices();}catch(e){setNotice(e.message,"err");btn.disabled=false;}}));
 }
-async function loadDevices() { setNotice("جارٍ تحميل بيانات الأجهزة...");try{const result=await api();devices=Array.isArray(result.devices)?result.devices:[];render();setNotice("تم الاتصال بنجاح. عدد الأجهزة: "+devices.length,"ok");}catch(e){setNotice(e.message,"err");if(/انتهت الجلسة|رفض الوصول/.test(e.message)){await supabase.auth.signOut();showSession(null);}} }
+
+function resetHostForm() {
+  $("hostForm").reset(); $("hostId").value=""; $("hostPriority").value="100"; $("hostEnabled").checked=true;
+  $("saveHostButton").textContent="إضافة الهوست"; $("cancelHostEdit").classList.add("hidden");
+}
+function renderHosts() {
+  $("hostCount").textContent=hosts.length+" من 10 هوستات";
+  if(!hosts.length){$("hostRows").innerHTML='<tr><td colspan="5" class="empty">لم تضف أي هوست بعد.</td></tr>';return;}
+  $("hostRows").innerHTML=hosts.map(h=>'<tr><td>'+safe(h.name)+'</td><td class="host-url" dir="ltr">'+safe(h.base_url)+'</td><td>'+safe(h.priority)+'</td><td><span class="status '+(h.is_enabled?'active':'blocked')+'">'+(h.is_enabled?'مفعّل':'متوقف')+'</span></td><td><div class="host-actions"><button class="secondary" data-host-edit="'+safe(h.id)+'">تعديل</button><button class="secondary" data-host-toggle="'+safe(h.id)+'">'+(h.is_enabled?'تعطيل':'تفعيل')+'</button><button class="danger" data-host-delete="'+safe(h.id)+'">حذف</button></div></td></tr>').join("");
+  document.querySelectorAll("[data-host-edit]").forEach(btn=>btn.addEventListener("click",()=>{
+    const h=hosts.find(x=>x.id===btn.dataset.hostEdit); if(!h)return;
+    $("hostId").value=h.id; $("hostName").value=h.name; $("hostUrl").value=h.base_url; $("hostPriority").value=h.priority; $("hostEnabled").checked=!!h.is_enabled;
+    $("saveHostButton").textContent="حفظ التعديل"; $("cancelHostEdit").classList.remove("hidden"); $("hostName").focus();
+  }));
+  document.querySelectorAll("[data-host-toggle]").forEach(btn=>btn.addEventListener("click",async()=>{
+    const h=hosts.find(x=>x.id===btn.dataset.hostToggle); if(!h)return; btn.disabled=true;
+    try{await api("PUT",{id:h.id,name:h.name,base_url:h.base_url,priority:h.priority,is_enabled:!h.is_enabled},"hosts");await loadHosts();setNotice("تم تحديث حالة الهوست.","ok");}
+    catch(e){setNotice(e.message,"err");btn.disabled=false;}
+  }));
+  document.querySelectorAll("[data-host-delete]").forEach(btn=>btn.addEventListener("click",async()=>{
+    const h=hosts.find(x=>x.id===btn.dataset.hostDelete); if(!h||!confirm("هل تريد حذف الهوست «"+h.name+"»؟"))return; btn.disabled=true;
+    try{await api("DELETE",{id:h.id},"hosts");await loadHosts();setNotice("تم حذف الهوست.","ok");}
+    catch(e){setNotice(e.message,"err");btn.disabled=false;}
+  }));
+}
+async function loadHosts() {
+  try{const result=await api("GET",null,"hosts");hosts=Array.isArray(result.hosts)?result.hosts:[];renderHosts();}
+  catch(e){setNotice("تعذر تحميل الهوستات: "+e.message,"err");}
+}
+$("hostForm").addEventListener("submit",async e=>{
+  e.preventDefault(); const id=$("hostId").value; const btn=$("saveHostButton"); btn.disabled=true;
+  const payload={name:$("hostName").value.trim(),base_url:$("hostUrl").value.trim(),priority:Number($("hostPriority").value),is_enabled:$("hostEnabled").checked};
+  if(id)payload.id=id;
+  try{await api(id?"PUT":"POST",payload,"hosts");resetHostForm();await loadHosts();setNotice(id?"تم تحديث بيانات الهوست.":"تمت إضافة الهوست بنجاح.","ok");}
+  catch(err){setNotice(err.message==="host_name_exists"?"اسم الهوست مستخدم بالفعل.":err.message==="host_limit_reached"?"وصلت إلى الحد الأقصى: 10 هوستات.":err.message==="invalid_host_data"?"تحقق من الاسم والرابط والأولوية.":err.message,"err");}
+  finally{btn.disabled=false;}
+});
+$("cancelHostEdit").addEventListener("click",resetHostForm);
+$("refreshHostsButton").addEventListener("click",loadHosts);
+
+async function loadDevices() { setNotice("جارٍ تحميل بيانات الأجهزة...");try{const result=await api();devices=Array.isArray(result.devices)?result.devices:[];render();setNotice("تم الاتصال بنجاح. عدد الأجهزة: "+devices.length,"ok");await loadHosts();}catch(e){setNotice(e.message,"err");if(/انتهت الجلسة|رفض الوصول/.test(e.message)){await supabase.auth.signOut();showSession(null);}} }
 $("loginForm").addEventListener("submit",async e=>{e.preventDefault();const btn=$("loginButton");btn.disabled=true;btn.textContent="جارٍ تسجيل الدخول...";try{const {data,error}=await supabase.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});if(error)throw error;if(data.user?.email?.toLowerCase()!=="kyanik010@gmail.com"){await supabase.auth.signOut();throw new Error("هذا الحساب غير مخوّل ليكون مشرفًا.");}loginMessage("تم تسجيل الدخول بنجاح.","ok");showSession(data.session);await loadDevices();}catch(err){loginMessage(err.message||"تعذّر تسجيل الدخول.");}finally{btn.disabled=false;btn.textContent="تسجيل الدخول";}});
 $("refreshButton").addEventListener("click",loadDevices);
 $("logoutButton").addEventListener("click",async()=>{await supabase.auth.signOut();devices=[];showSession(null);$("password").value="";});
